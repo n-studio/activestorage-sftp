@@ -220,7 +220,7 @@ module ActiveStorage
     end
 
     def path_for(key)
-      File.join folder_for(key), key
+      File.join relative_folder_for(key), key
     end
 
     protected
