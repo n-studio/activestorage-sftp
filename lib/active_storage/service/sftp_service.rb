@@ -91,7 +91,7 @@ module ActiveStorage
         chunk = StringIO.new
         through_sftp do |sftp|
           sftp.open(path_for(key)) do |file|
-            chunk << sftp.read(file, range.begin, range.size) { |response| response[:data] }
+            chunk << sftp.read(file, range.begin, range.size) { |response| response&.[](:data) }
           end
         end
         chunk.string
